@@ -9,6 +9,7 @@ const ROLE = "Full Stack Developer";
 
 export function Hero() {
   const rootRef = useRef<HTMLElement>(null);
+  const colorLayerRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
 
   const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -16,6 +17,14 @@ export function Hero() {
     const rect = wrap.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
+    const radius = 72;
+    const mask = `radial-gradient(circle ${radius}px at ${x}px ${y}px, #000 0 ${radius - 8}px, transparent ${radius}px)`;
+    const colorLayer = colorLayerRef.current;
+    if (colorLayer) {
+      colorLayer.style.opacity = "1";
+      colorLayer.style.maskImage = mask;
+      (colorLayer.style as CSSStyleDeclaration & { webkitMaskImage: string }).webkitMaskImage = mask;
+    }
     const ring = ringRef.current;
     if (ring) {
       ring.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
@@ -24,6 +33,7 @@ export function Hero() {
   };
 
   const handleLeave = () => {
+    if (colorLayerRef.current) colorLayerRef.current.style.opacity = "0";
     if (ringRef.current) ringRef.current.style.opacity = "0";
   };
 
@@ -94,8 +104,22 @@ export function Hero() {
               fill
               priority
               sizes="(max-width: 768px) 88vw, 360px"
-              className="object-contain drop-shadow-[0_24px_36px_rgba(0,0,0,0.45)]"
+              className="object-contain grayscale contrast-[1.05] drop-shadow-[0_24px_36px_rgba(0,0,0,0.45)]"
             />
+            <div
+              ref={colorLayerRef}
+              aria-hidden
+              className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-150"
+            >
+              <Image
+                src="/images/hero-cutout.png"
+                alt=""
+                fill
+                priority
+                sizes="(max-width: 768px) 88vw, 360px"
+                className="object-contain"
+              />
+            </div>
             <div
               ref={ringRef}
               aria-hidden
