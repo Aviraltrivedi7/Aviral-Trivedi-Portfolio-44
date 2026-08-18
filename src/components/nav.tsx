@@ -64,7 +64,7 @@ export function Nav() {
 
         <a
           href="/cv.pdf"
-          download="Aviral_Trivedi_Resume.pdf"
+          download="Aviral_Trivedi_IITM_CV.pdf"
           onClick={() => setOpen(false)}
           className="rounded-full bg-fg px-4 py-1.5 text-sm font-medium text-bg transition-colors hover:bg-accent"
         >
@@ -109,7 +109,7 @@ export function Nav() {
             <li className="pt-2">
               <a
                 href="/cv.pdf"
-                download="Aviral_Trivedi_Resume.pdf"
+                download="Aviral_Trivedi_IITM_CV.pdf"
                 onClick={() => setOpen(false)}
                 className="block w-full rounded-2xl bg-fg px-4 py-3 text-center text-sm font-semibold text-bg transition-colors hover:bg-accent"
               >
