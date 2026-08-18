@@ -89,12 +89,12 @@ export function Hero() {
             className="absolute top-1/2 left-1/2 z-10 mb-20 h-[80vh] w-[min(60vw,360px)] -translate-x-1/2 -translate-y-1/2 cursor-none will-change-transform"
           >
             <Image
-              src="/images/hero-full.jpeg"
-              alt="Aviral Trivedi at IIT Madras"
+              src="/images/hero-cutout.png"
+              alt="Aviral Trivedi"
               fill
               priority
               sizes="(max-width: 768px) 88vw, 360px"
-              className="rounded-2xl object-contain shadow-2xl"
+              className="object-contain drop-shadow-[0_24px_36px_rgba(0,0,0,0.45)]"
             />
             <div
               ref={ringRef}
