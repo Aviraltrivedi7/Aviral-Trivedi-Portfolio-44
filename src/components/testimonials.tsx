@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { CertificateCard } from "@/components/certificate-card";
 
 const EDUCATION = [
   {
@@ -21,34 +22,46 @@ const EDUCATION = [
 
 const CERTIFICATIONS = [
   {
-    title: "Advanced Cybersecurity & Cyber Awareness 2025",
+    title: "Cybersecurity Awareness Quiz 2025",
     issuer: "IIT Kanpur",
     tag: "Security",
+    preview: "/certificates/iitk-cybersecurity-quiz-2025.png",
+    file: "/certificates/iitk-cybersecurity-quiz-2025.png",
   },
   {
-    title: "Google Technical Support Fundamentals",
-    issuer: "Google / Coursera",
-    tag: "IT & Systems",
+    title: "Advanced Cybersecurity Awareness Quiz 2025",
+    issuer: "IIT Kanpur",
+    tag: "Security",
+    preview: "/certificates/iitk-advanced-cybersecurity-2025.png",
+    file: "/certificates/iitk-advanced-cybersecurity-2025.png",
   },
   {
-    title: "Oracle Certified Professional",
+    title: "Oracle Cloud Infrastructure 2025 Certified Generative AI Professional",
     issuer: "Oracle",
-    tag: "Cloud & DB",
+    tag: "Cloud & AI",
+    preview: "/certificates/oracle-certified-generative-ai-professional.jpg",
+    file: "/certificates/oracle-certified-generative-ai-professional.jpg",
   },
   {
-    title: "Frontend Web Development Internship",
-    issuer: "AICTE / EduSkills / SmartBridge",
+    title: "Front End Web Development Internship",
+    issuer: "AICTE / Edunet Foundation",
     tag: "Development",
+    preview: "/certificates/ibm-certificate-2025-preview.png",
+    file: "/certificates/ibm-certificate-2025.pdf",
   },
   {
-    title: "Microsoft Office Specialist Certification",
-    issuer: "Microsoft",
-    tag: "Productivity",
+    title: "Start Writing Prompts like a Pro",
+    issuer: "Google / Coursera",
+    tag: "AI & Writing",
+    preview: "/certificates/google-coursera-certificate-preview.png",
+    file: "/certificates/google-coursera-certificate.pdf",
   },
   {
-    title: "Gemini Certified Student",
-    issuer: "Google for Education",
-    tag: "AI Tools",
+    title: "Yuva AI for All",
+    issuer: "NIELIT",
+    tag: "AI Skills",
+    preview: "/certificates/yuva-ai-certificate-preview.png",
+    file: "/certificates/yuva-ai-certificate.pdf",
   },
 ];
 
@@ -109,24 +122,13 @@ export function Testimonials() {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {CERTIFICATIONS.map((cert, idx) => (
               <motion.div
-                key={idx}
+                key={cert.file}
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.06 }}
-                className="flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-5 backdrop-blur-sm transition-colors hover:border-white/25 hover:bg-white/[0.04]"
               >
-                <div>
-                  <div className="flex items-center justify-between text-xs text-grey-2">
-                    <span>{cert.issuer}</span>
-                    <span className="rounded-md bg-white/5 px-2 py-0.5 text-[10px] text-white/70">
-                      {cert.tag}
-                    </span>
-                  </div>
-                  <h4 className="mt-3 font-display text-base font-semibold text-fg">
-                    {cert.title}
-                  </h4>
-                </div>
+                <CertificateCard certificate={cert} />
               </motion.div>
             ))}
           </div>
