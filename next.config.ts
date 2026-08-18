@@ -1,17 +1,13 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  headers: async () => [
-    {
-      source: "/:path*",
-      headers: [
-        {
-          key: "Cache-Control",
-          value: "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
-        },
-      ],
-    },
-  ],
-};
+const isStaticExport = process.env.NEXT_STATIC_EXPORT === "true";
+
+const nextConfig: NextConfig = isStaticExport
+  ? {
+      output: "export",
+      images: { unoptimized: true },
+      trailingSlash: false,
+    }
+  : {};
 
 export default nextConfig;

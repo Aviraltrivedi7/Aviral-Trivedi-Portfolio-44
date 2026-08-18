@@ -31,7 +31,12 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     gsap.ticker.add(raf);
     gsap.ticker.lagSmoothing(0);
 
-    lenis.scrollTo(0, { immediate: true });
+    const hash = window.location.hash;
+    if (hash) {
+      requestAnimationFrame(() => {
+        lenis.scrollTo(hash, { offset: -96, duration: 1.2 });
+      });
+    }
 
     return () => {
       gsap.ticker.remove(raf);

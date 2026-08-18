@@ -1,19 +1,20 @@
 "use client";
 
+import { useState } from "react";
 import { socials, SocialIcon } from "@/components/social-icons";
 import { scrollToSection } from "@/lib/scroll";
 
-const SOCIAL_LINKS: Record<string, string> = {
+const SOCIAL_LINKS: Partial<Record<string, string>> = {
   whatsapp: "https://wa.me/919219797581?text=Hello!",
   linkedin: "https://www.linkedin.com/in/aviral-trivedi0/",
   github: "https://github.com/Aviraltrivedi7",
-  instagram: "https://www.instagram.com/",
-  facebook: "https://www.facebook.com/",
 };
 
 const EMAIL = "trivediaviral46@gmail.com";
 
 export function Connect() {
+  const [submitted, setSubmitted] = useState(false);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
@@ -23,6 +24,7 @@ export function Connect() {
     const body = encodeURIComponent(
       `${fd.get("message")}\n\nReply to: ${fd.get("email")}`
     );
+    setSubmitted(true);
     window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
   };
 
@@ -51,7 +53,9 @@ export function Connect() {
             </div>
 
             <div className="flex gap-3">
-              {Object.entries(socials).map(([name, def]) => (
+              {Object.entries(socials)
+                .filter(([name]) => SOCIAL_LINKS[name])
+                .map(([name, def]) => (
                 <a
                   key={name}
                   href={SOCIAL_LINKS[name]}
@@ -63,39 +67,58 @@ export function Connect() {
                 >
                   <SocialIcon name={name} className="h-5 w-5" />
                 </a>
-              ))}
+                ))}
             </div>
           </div>
 
           <form onSubmit={handleSubmit} className="grid w-full max-w-md gap-3">
             <div className="grid grid-cols-2 gap-3">
-              <input
-                name="name"
+              <div>
+                <label htmlFor="contact-name" className="sr-only">Name</label>
+                <input
+                  id="contact-name"
+                  name="name"
+                  required
+                  autoComplete="name"
+                  placeholder="Name"
+                  className="w-full rounded-2xl border border-white/10 bg-grey-1 px-4 py-3 text-sm outline-none placeholder:text-grey-2 focus:border-white/40"
+                />
+              </div>
+              <div>
+                <label htmlFor="contact-email" className="sr-only">Email</label>
+                <input
+                  id="contact-email"
+                  name="email"
+                  type="email"
+                  required
+                  autoComplete="email"
+                  placeholder="Email"
+                  className="w-full rounded-2xl border border-white/10 bg-grey-1 px-4 py-3 text-sm outline-none placeholder:text-grey-2 focus:border-white/40"
+                />
+              </div>
+            </div>
+            <div>
+              <label htmlFor="contact-message" className="sr-only">Message</label>
+              <textarea
+                id="contact-message"
+                name="message"
                 required
-                placeholder="Name"
-                className="rounded-2xl border border-white/10 bg-grey-1 px-4 py-3 text-sm outline-none placeholder:text-grey-2 focus:border-white/40"
-              />
-              <input
-                name="email"
-                type="email"
-                required
-                placeholder="Email"
-                className="rounded-2xl border border-white/10 bg-grey-1 px-4 py-3 text-sm outline-none placeholder:text-grey-2 focus:border-white/40"
+                rows={3}
+                placeholder="Message"
+                className="w-full resize-none rounded-2xl border border-white/10 bg-grey-1 px-4 py-3 text-sm outline-none placeholder:text-grey-2 focus:border-white/40"
               />
             </div>
-            <textarea
-              name="message"
-              required
-              rows={3}
-              placeholder="Message"
-              className="resize-none rounded-2xl border border-white/10 bg-grey-1 px-4 py-3 text-sm outline-none placeholder:text-grey-2 focus:border-white/40"
-            />
             <button
               type="submit"
               className="mt-1 rounded-full bg-fg px-6 py-3 text-sm font-medium text-bg transition-colors hover:bg-accent"
             >
               Send
             </button>
+            {submitted && (
+              <p className="text-sm text-grey-2" role="status">
+                Your email app should open with the message prepared. If it does not, email me directly at {EMAIL}.
+              </p>
+            )}
           </form>
         </div>
       </section>

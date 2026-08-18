@@ -7,9 +7,8 @@ function subscribe(callback: () => void) {
 }
 
 /**
- * True when the device has a fine pointer (mouse) AND does not request
- * reduced motion. Used to gate mouse-only interactions like the
- * cursor-follower and clip-path color reveals.
+ * True when the device has a fine pointer (mouse). Consumers combine this
+ * with usePrefersReducedMotion() when motion should also be disabled.
  */
 export function useFinePointer() {
   return useSyncExternalStore(
@@ -29,6 +28,19 @@ export function usePrefersReducedMotion() {
   return useSyncExternalStore(
     subscribeReduced,
     () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    () => false
+  );
+}
+
+function subscribeNoop() {
+  return () => {};
+}
+
+/** True only after hydration, without a cascading state update in an effect. */
+export function useMounted() {
+  return useSyncExternalStore(
+    subscribeNoop,
+    () => true,
     () => false
   );
 }

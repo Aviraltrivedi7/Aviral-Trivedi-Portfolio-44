@@ -10,6 +10,7 @@ export type Project = {
   stack: string[];
   live?: string;
   github?: string;
+  image: string;
   accent: string;
 };
 
@@ -28,7 +29,7 @@ export const projects: Project[] = [
       "Built a Progressive Web App (PWA) using React and Tailwind CSS featuring dynamic station-to-station route computation (IIT Kanpur to Kanpur Central), interactive line maps, Hindi/English localization, and instant offline caching.",
     stack: ["React.js", "Tailwind CSS", "PWA (Service Workers)", "Lucide Icons", "Vercel"],
     live: "https://kanpur-metro-safar-guide.vercel.app/",
-    github: "https://github.com/Aviraltrivedi7/kanpur-metro-safar-guide",
+    image: "/projects/kanpur-metro.png",
     accent: "#06b6d4",
   },
   {
@@ -45,7 +46,7 @@ export const projects: Project[] = [
       "Developed a comprehensive financial tracking web app with interactive Chart.js visualizations, net balance calculations, categorized logs, and smart insights for budgeting efficiency.",
     stack: ["React.js", "Tailwind CSS", "Chart.js", "AI Insights", "Vercel"],
     live: "https://smartbudget-ai-enhanced7.vercel.app/",
-    github: "https://github.com/Aviraltrivedi7",
+    image: "/projects/smartbudget.png",
     accent: "#10b981",
   },
   {
@@ -62,7 +63,7 @@ export const projects: Project[] = [
       "Built a real-time console with market cap metrics, live candlestick graphs, 24h price trend charts, search filtering, and responsive currency tables.",
     stack: ["React.js", "REST APIs", "Tailwind CSS", "Chart.js", "TradingView Widgets"],
     live: "https://cryptodashboard11425.vercel.app/",
-    github: "https://github.com/Aviraltrivedi7",
+    image: "/projects/cryptodashboard.png",
     accent: "#f59e0b",
   },
   {
@@ -79,7 +80,8 @@ export const projects: Project[] = [
       "Designed and deployed an immersive web portfolio featuring custom 3D mesh rendering, an interactive command-line interface with custom commands, and keyboard shortcut search.",
     stack: ["React.js", "Three.js", "Tailwind CSS", "GSAP", "Vite"],
     live: "https://aviraltrivedi.in/",
-    github: "https://github.com/Aviraltrivedi7",
+    github: "https://github.com/Aviraltrivedi7/Aviral-Trivedi-Portfolio-44",
+    image: "/projects/cyber-os.png",
     accent: "#ec4899",
   },
 ];

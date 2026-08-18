@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aviral Trivedi Portfolio
 
-## Getting Started
+A cinematic, scroll-driven developer portfolio built with Next.js App Router, TypeScript, Tailwind CSS, GSAP, Lenis, Framer Motion, and React Three Fiber.
 
-First, run the development server:
+## Requirements
+
+Use Node.js 20 or newer and npm. The project uses `src/app` as the App Router source directory.
+
+## Local development
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). The main editable entry point is `src/app/page.tsx`; reusable UI lives under `src/components`, and project content lives in `src/lib/projects.ts`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Quality checks
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm run build
+npm audit
+```
 
-## Learn More
+The build generates the home page and the four static project routes under `src/app/projects/[slug]`.
 
-To learn more about Next.js, take a look at the following resources:
+## Static export
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+For plain static hosting, build with:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+NEXT_STATIC_EXPORT=true npm run build
+```
 
-## Deploy on Vercel
+The exported files are written to `out/`. Configure the host to serve clean project URLs such as `/projects/kanpur-metro-safar-guide` and to fall back to the matching generated HTML file where required. Vercel can deploy the normal Next.js build directly without static-export mode.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Content and links
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Project titles, descriptions, live demos, source links, accent colors, and image paths are maintained in `src/lib/projects.ts`. Only verified public source repositories should receive a `View GitHub Source Code` CTA. Private or unavailable repositories should leave the `github` field empty.
+
+The CV is served from `public/cv.pdf`. The contact form currently prepares a `mailto:` message for `trivediaviral46@gmail.com`; a transactional email provider can be added later without changing the page structure.
+
+## Project structure
+
+| Path | Purpose |
+|---|---|
+| `src/app/page.tsx` | Home page composition |
+| `src/app/projects/[slug]/page.tsx` | Static project detail pages and metadata |
+| `src/app/layout.tsx` | Fonts, global metadata, navigation shell |
+| `src/components/` | Hero, transitions, gallery, skills, contact, and 3D UI |
+| `src/lib/projects.ts` | Project content and verified links |
+| `src/lib/media.ts` | Pointer, reduced-motion, and hydration-safe media hooks |
+| `public/` | Images, project mockups, favicon, and CV |

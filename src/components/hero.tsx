@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
+import { useMounted } from "@/lib/media";
 
 const NAME = "Aviral Trivedi";
 const ROLE = "Full Stack Developer";
@@ -11,11 +12,7 @@ export function Hero() {
   const rootRef = useRef<HTMLElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   const maskRef = useRef<HTMLDivElement>(null);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useMounted();
 
   const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const wrap = e.currentTarget;

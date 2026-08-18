@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { projects, type Project } from "@/lib/projects";
 
@@ -11,12 +12,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 function ProjectCard({ project }: { project: Project }) {
   const reduce = useReducedMotion();
-
-  let imgPath = `/projects/${project.slug}.png`;
-  if (project.slug === "kanpur-metro-safar-guide") imgPath = "/projects/kanpur-metro.png";
-  if (project.slug === "smartbudget-ai") imgPath = "/projects/smartbudget.png";
-  if (project.slug === "cryptodashboard") imgPath = "/projects/cryptodashboard.png";
-  if (project.slug === "aviral-cyber-os-portfolio") imgPath = "/projects/cyber-os.png";
 
   return (
     <motion.article
@@ -35,10 +30,12 @@ function ProjectCard({ project }: { project: Project }) {
         >
           {/* Mockup Preview Image */}
           <div className="absolute inset-4 overflow-hidden rounded-xl border border-white/10 bg-black/40 shadow-xl transition-transform duration-500 group-hover:scale-[1.02]">
-            <img
-              src={imgPath}
-              alt={project.title}
-              className="h-full w-full object-cover object-center"
+            <Image
+              src={project.image}
+              alt={`${project.title} interface preview`}
+              fill
+              sizes="(max-width: 640px) 82vw, (max-width: 768px) 46vw, (max-width: 1024px) 40vw, 26vw"
+              className="object-cover object-center"
             />
           </div>
 

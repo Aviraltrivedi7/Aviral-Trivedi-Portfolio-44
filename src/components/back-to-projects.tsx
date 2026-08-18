@@ -1,18 +1,16 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { scrollToSection } from "@/lib/scroll";
 
 /**
- * Returns to the home route and gently scrolls back to the Projects
- * gallery (approximating resume-at-same-horizontal-position).
+ * Returns to the home route at the Projects section without relying on a
+ * fixed timeout that can race slow client-side navigation.
  */
 export function BackToProjects() {
   const router = useRouter();
 
   const onClick = () => {
-    router.push("/");
-    setTimeout(() => scrollToSection("#projects"), 350);
+    router.push("/#projects");
   };
 
   return (

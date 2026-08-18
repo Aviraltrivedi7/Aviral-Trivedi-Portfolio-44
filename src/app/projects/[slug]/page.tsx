@@ -17,6 +17,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${project.title} — Projects | Aviral Trivedi`,
     description: project.summary,
+    alternates: {
+      canonical: `/projects/${project.slug}`,
+    },
+    openGraph: {
+      title: `${project.title} — Aviral Trivedi`,
+      description: project.summary,
+      url: `https://aviraltrivedi.in/projects/${project.slug}`,
+      siteName: "Aviral Trivedi Portfolio",
+      images: [
+        {
+          url: project.image,
+          width: 1600,
+          height: 900,
+          alt: `${project.title} interface showcase`,
+        },
+      ],
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} — Aviral Trivedi`,
+      description: project.summary,
+      images: [project.image],
+    },
   };
 }
 
@@ -24,12 +48,6 @@ export default async function ProjectPage({ params }: Props) {
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) notFound();
-
-  let imgPath = `/projects/${project.slug}.png`;
-  if (project.slug === "kanpur-metro-safar-guide") imgPath = "/projects/kanpur-metro.png";
-  if (project.slug === "smartbudget-ai") imgPath = "/projects/smartbudget.png";
-  if (project.slug === "cryptodashboard") imgPath = "/projects/cryptodashboard.png";
-  if (project.slug === "aviral-cyber-os-portfolio") imgPath = "/projects/cyber-os.png";
 
   return (
     <article className="relative min-h-screen bg-bg text-fg px-6 pt-24 pb-20 md:px-16">
@@ -85,10 +103,13 @@ export default async function ProjectPage({ params }: Props) {
           />
 
           {/* Real Mockup Image */}
-          <img
-            src={imgPath}
-            alt={`${project.title} Interface Showcase`}
-            className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.01]"
+          <Image
+            src={project.image}
+            alt={`${project.title} interface showcase`}
+            fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.01]"
           />
 
           {/* Overlay Tag */}

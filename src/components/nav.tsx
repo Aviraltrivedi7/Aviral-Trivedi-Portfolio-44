@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { scrollToSection } from "@/lib/scroll";
 
 const LINKS = [
@@ -15,6 +16,8 @@ const LINKS = [
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const onScroll = () => {
@@ -28,7 +31,11 @@ export function Nav() {
 
   const go = (target: string) => {
     setOpen(false);
-    scrollToSection(target);
+    if (pathname === "/") {
+      scrollToSection(target);
+    } else {
+      router.push(`/${target}`);
+    }
   };
 
   return (
