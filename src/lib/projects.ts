@@ -66,24 +66,6 @@ export const projects: Project[] = [
     image: "/projects/cryptodashboard.png",
     accent: "#f59e0b",
   },
-  {
-    slug: "aviral-cyber-os-portfolio",
-    title: "3D Cyber OS Portfolio",
-    tagline: "Interactive 3D Portfolio · Three.js",
-    year: "2025",
-    role: "Creator & 3D Developer",
-    summary:
-      "An interactive 3D portfolio experience featuring Three.js canvas, retro CLI terminal (Aviral Cyber OS v3.0), theme switchers, and dynamic project showcase decks.",
-    problem:
-      "Traditional static portfolio resumes often fail to showcase interactive graphics skills, creative engineering, and command-line mastery.",
-    solution:
-      "Designed and deployed an immersive web portfolio featuring custom 3D mesh rendering, an interactive command-line interface with custom commands, and keyboard shortcut search.",
-    stack: ["React.js", "Three.js", "Tailwind CSS", "GSAP", "Vite"],
-    live: "https://aviraltrivedi.in/",
-    github: "https://github.com/Aviraltrivedi7/Aviral-Trivedi-Portfolio-44",
-    image: "/projects/cyber-os.png",
-    accent: "#ec4899",
-  },
 ];
 
 export function getProject(slug: string): Project | undefined {
