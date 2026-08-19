@@ -91,18 +91,18 @@ export function Hero() {
         <div className="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-cyan-300/25 to-transparent motion-safe:animate-pulse" />
       </div>
 
-      <div className="relative z-10 flex w-fit flex-col items-center" suppressHydrationWarning>
+      <div className="relative z-10 flex w-full max-w-[1200px] flex-col items-center px-6 md:w-fit md:max-w-none md:px-0" suppressHydrationWarning>
         {/* Name — small, left-aligned with the wordmark */}
-        <span className="mb-3 w-full self-start font-display text-lg font-semibold tracking-tight text-fg md:text-2xl">
+        <span className="mb-2 w-full max-w-[88vw] self-start font-display text-lg font-semibold tracking-tight text-fg sm:text-xl md:mb-3 md:max-w-none md:text-2xl">
           {NAME}
         </span>
 
         {/* Wordmark + portrait overlay (photo sits IN FRONT of the text) */}
-        <div className="relative" suppressHydrationWarning>
+        <div className="relative mt-1 h-[58vh] w-full max-w-[720px] md:mt-0 md:h-auto md:w-fit md:max-w-none" suppressHydrationWarning>
           <h1
             data-wordmark
             aria-hidden
-            className="pointer-events-none z-0 whitespace-nowrap text-center font-display font-bold leading-none text-white/[0.09]"
+            className="pointer-events-none absolute inset-x-0 top-[16%] z-0 whitespace-nowrap text-center font-display font-bold leading-none text-white/[0.09] md:static md:block"
             style={{ fontSize: "clamp(3.5rem, 12vw, 12rem)" }}
           >
             DEVELOPER
@@ -113,7 +113,7 @@ export function Hero() {
             suppressHydrationWarning
             onMouseMove={handleMove}
             onMouseLeave={handleLeave}
-            className="isolate absolute top-1/2 left-1/2 z-10 mb-20 h-[66vh] w-[min(78vw,360px)] -translate-x-1/2 -translate-y-1/2 cursor-none will-change-transform sm:h-[74vh] sm:w-[min(68vw,360px)] md:h-[80vh] md:w-[min(60vw,360px)] will-change-transform"
+            className="isolate absolute top-1/2 left-1/2 z-10 h-[54vh] w-[min(74vw,360px)] -translate-x-1/2 -translate-y-1/2 will-change-transform sm:h-[62vh] sm:w-[min(68vw,360px)] md:mb-20 md:h-[80vh] md:w-[min(60vw,360px)] md:cursor-none will-change-transform"
           >
             <div
               aria-hidden
@@ -155,7 +155,7 @@ export function Hero() {
         </div>
 
         {/* Role — small, right-aligned with the wordmark (under the "R") */}
-        <span className="mt-4 w-full max-w-[72vw] self-end text-right font-display text-xs tracking-wide text-grey-2 sm:max-w-[52vw] md:max-w-[40vw] md:text-sm">
+        <span className="relative z-20 mt-2 w-full max-w-[88vw] self-end text-right font-display text-sm font-medium tracking-wide text-grey-2 sm:max-w-[76vw] md:mt-4 md:max-w-[40vw] md:text-sm">
           {ROLE}
         </span>
       </div>
