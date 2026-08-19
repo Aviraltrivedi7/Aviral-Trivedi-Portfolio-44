@@ -75,7 +75,7 @@ export function Testimonials() {
   return (
     <section
       id="education"
-      className="relative px-6 py-28 md:px-16"
+      className="relative scroll-mt-28 px-6 py-28 md:px-16"
     >
       <div className="mx-auto max-w-6xl">
         <p className="mb-4 text-xs tracking-[0.3em] text-grey-2 uppercase">

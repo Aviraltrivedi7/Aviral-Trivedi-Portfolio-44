@@ -29,8 +29,8 @@ export function Connect() {
   };
 
   return (
-    <footer className="relative px-6 pt-20 pb-10 md:px-16 md:pt-40">
-      <section id="connect" className="mb-32">
+    <footer className="relative min-w-0 overflow-x-clip px-6 pt-20 pb-10 md:px-16 md:pt-40">
+      <section id="connect" className="mb-32 min-w-0 scroll-mt-28">
         <p className="mb-6 text-xs tracking-[0.3em] text-grey-2 uppercase">
           Get in touch
         </p>
@@ -45,7 +45,7 @@ export function Connect() {
             <div className="space-y-2">
               <a
                 href={`mailto:${EMAIL}`}
-                className="font-display text-lg text-fg transition-colors hover:text-accent md:text-xl"
+                className="block max-w-full break-words font-display text-lg text-fg transition-colors hover:text-accent md:text-xl"
               >
                 {EMAIL}
               </a>
@@ -71,8 +71,8 @@ export function Connect() {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="grid w-full max-w-md gap-3 md:max-w-lg">
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <form onSubmit={handleSubmit} className="grid w-full min-w-0 max-w-md gap-3 md:max-w-lg">
+            <div className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2">
               <div>
                 <label htmlFor="contact-name" className="sr-only">Name</label>
                 <input
@@ -81,7 +81,7 @@ export function Connect() {
                   required
                   autoComplete="name"
                   placeholder="Name"
-                  className="w-full min-w-0 rounded-2xl border border-white/10 bg-grey-1 px-4 py-3 text-sm outline-none placeholder:text-grey-2 focus:border-white/40"
+                  className="box-border block w-full min-w-0 max-w-full rounded-2xl border border-white/10 bg-grey-1 px-4 py-3 text-sm outline-none placeholder:text-grey-2 focus:border-white/40"
                 />
               </div>
               <div>
@@ -93,7 +93,7 @@ export function Connect() {
                   required
                   autoComplete="email"
                   placeholder="Email"
-                  className="w-full min-w-0 rounded-2xl border border-white/10 bg-grey-1 px-4 py-3 text-sm outline-none placeholder:text-grey-2 focus:border-white/40"
+                  className="box-border block w-full min-w-0 max-w-full rounded-2xl border border-white/10 bg-grey-1 px-4 py-3 text-sm outline-none placeholder:text-grey-2 focus:border-white/40"
                 />
               </div>
             </div>
@@ -105,12 +105,12 @@ export function Connect() {
                 required
                 rows={3}
                 placeholder="Message"
-                className="w-full resize-none rounded-2xl border border-white/10 bg-grey-1 px-4 py-3 text-sm outline-none placeholder:text-grey-2 focus:border-white/40"
+                className="box-border block w-full min-w-0 max-w-full resize-none rounded-2xl border border-white/10 bg-grey-1 px-4 py-3 text-sm outline-none placeholder:text-grey-2 focus:border-white/40"
               />
             </div>
             <button
               type="submit"
-              className="mt-1 rounded-full bg-fg px-6 py-3 text-sm font-medium text-bg transition-colors hover:bg-accent"
+              className="mt-1 w-full rounded-full bg-fg px-6 py-3 text-sm font-medium text-bg transition-colors hover:bg-accent"
             >
               Send
             </button>

@@ -14,6 +14,9 @@ export function scrollToSection(target: string) {
   if (lenis) {
     lenis.scrollTo(target, { offset: -96, duration: 1.2 });
   } else {
-    document.querySelector(target)?.scrollIntoView({ behavior: "smooth" });
+    const element = document.querySelector<HTMLElement>(target);
+    if (!element) return;
+    const top = element.getBoundingClientRect().top + window.scrollY - 96;
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
   }
 }

@@ -124,7 +124,7 @@ export function ProjectsGallery() {
       ref={sceneRef}
       // No min-height — pin-spacer provides the scroll space (1680vh)
       // Section only needs height for its content (header + track)
-      className="relative overflow-hidden bg-bg text-fg"
+      className="relative scroll-mt-28 overflow-hidden bg-bg text-fg"
     >
       {/* Sticky header */}
       <div className="sticky top-0 z-10 shrink-0 px-8 pt-20 pb-2 md:px-16 bg-bg">

@@ -3,7 +3,7 @@ import { BrandMark } from "@/components/brand-mark";
 
 export function Skills() {
   return (
-    <section id="skills" className="px-6 py-32 md:px-16">
+    <section id="skills" className="scroll-mt-28 px-6 py-32 md:px-16">
       <p className="mb-4 text-xs tracking-[0.3em] text-grey-2 uppercase">
         Toolkit
       </p>

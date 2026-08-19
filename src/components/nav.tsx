@@ -41,8 +41,8 @@ export function Nav() {
   return (
     <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
       <nav
-        className={`flex items-center justify-between gap-4 rounded-full border border-white/10 bg-black/40 px-4 py-2 backdrop-blur-xl transition-all duration-500 ${
-          scrolled ? "max-w-4xl scale-[0.98]" : "max-w-xl"
+        className={`relative flex w-full max-w-[22rem] items-center justify-between gap-4 rounded-full border border-white/10 bg-black/40 px-4 py-2 backdrop-blur-xl transition-all duration-500 md:w-auto md:max-w-none ${
+          scrolled ? "md:max-w-4xl md:scale-[0.98]" : "md:max-w-xl"
         }`}
       >
         <span className="px-2 font-display text-lg font-bold tracking-tight text-fg">
@@ -94,7 +94,7 @@ export function Nav() {
       </nav>
 
       {open && (
-        <div className="absolute top-16 w-[calc(100%-2rem)] rounded-3xl border border-white/10 bg-black/60 p-3 backdrop-blur-xl md:hidden">
+        <div className="absolute top-[calc(100%+0.75rem)] left-1/2 w-full max-w-[22rem] -translate-x-1/2 rounded-3xl border border-white/10 bg-black/85 p-3 shadow-2xl shadow-black/40 backdrop-blur-xl md:hidden">
           <ul className="flex flex-col gap-1">
             {LINKS.map((link) => (
               <li key={link.target}>
