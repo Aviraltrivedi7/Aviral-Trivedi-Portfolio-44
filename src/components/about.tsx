@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { TextOutline } from "@/components/text-outline";
 
 const TechObject = dynamic(
@@ -33,8 +34,18 @@ export function About() {
       </div>
 
       {/* Right: realistic 3D tech object */}
-      <div className="relative flex h-[320px] sm:h-[400px] md:h-[480px] items-center justify-center overflow-hidden">
-        <div className="h-full w-full max-w-[480px]">
+      <div className="relative flex h-[320px] min-h-[320px] items-center justify-center overflow-hidden sm:h-[400px] sm:min-h-[400px] md:h-[480px] md:min-h-0">
+        {/* Reliable mobile fallback: keep the computer visible even when WebGL is unavailable. */}
+        <div className="absolute inset-0 md:hidden">
+          <Image
+            src="/object.png"
+            alt="Interactive computer interface visual"
+            fill
+            sizes="(max-width: 767px) 88vw, 480px"
+            className="object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,0.25)]"
+          />
+        </div>
+        <div className="hidden h-full w-full max-w-[480px] md:block">
           <TechObject />
         </div>
       </div>

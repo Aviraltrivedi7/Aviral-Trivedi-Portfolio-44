@@ -27,7 +27,13 @@ export function WipeTransition({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const root = rootRef.current;
-    if (!root || reduced) return;
+    if (
+      !root ||
+      reduced ||
+      window.matchMedia("(max-width: 767px)").matches
+    ) {
+      return;
+    }
 
     const ctx = gsap.context(() => {
       const panel = panelRef.current;
@@ -71,16 +77,19 @@ export function WipeTransition({ children }: { children: React.ReactNode }) {
     <div
       id="about"
       ref={rootRef}
-      className="relative h-[120vh] scroll-mt-28 md:h-[160vh]"
+      className="relative h-auto scroll-mt-28 md:h-[160vh]"
     >
-      <div ref={frameRef} className="sticky top-0 h-screen overflow-hidden">
+      <div
+        ref={frameRef}
+        className="relative h-auto overflow-visible md:sticky md:top-0 md:h-screen md:overflow-hidden"
+      >
         {/* About white content, always fully rendered */}
-        <div className="absolute inset-0 z-10 bg-fg">{children}</div>
-        {/* Black curtain that glides away */}
+        <div className="relative z-10 bg-fg md:absolute md:inset-0">{children}</div>
+        {/* Black curtain that glides away on desktop only */}
         <div
           ref={panelRef}
           aria-hidden
-          className="absolute inset-0 z-20 bg-bg will-change-transform"
+          className="absolute inset-0 z-20 hidden bg-bg will-change-transform md:block"
         />
       </div>
     </div>
