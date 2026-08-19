@@ -29,12 +29,12 @@ export function Connect() {
   };
 
   return (
-    <footer className="relative px-6 pt-40 pb-10 md:px-16">
+    <footer className="relative px-6 pt-20 pb-10 md:px-16 md:pt-40">
       <section id="connect" className="mb-32">
         <p className="mb-6 text-xs tracking-[0.3em] text-grey-2 uppercase">
           Get in touch
         </p>
-        <h2 className="font-display text-7xl font-bold tracking-tight md:text-9xl">
+        <h2 className="font-display text-5xl font-bold tracking-tight sm:text-6xl md:text-9xl">
           Let&rsquo;s
           <br />
           Connect
@@ -71,8 +71,8 @@ export function Connect() {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="grid w-full max-w-md gap-3">
-            <div className="grid grid-cols-2 gap-3">
+          <form onSubmit={handleSubmit} className="grid w-full max-w-md gap-3 md:max-w-lg">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <div>
                 <label htmlFor="contact-name" className="sr-only">Name</label>
                 <input
@@ -81,7 +81,7 @@ export function Connect() {
                   required
                   autoComplete="name"
                   placeholder="Name"
-                  className="w-full rounded-2xl border border-white/10 bg-grey-1 px-4 py-3 text-sm outline-none placeholder:text-grey-2 focus:border-white/40"
+                  className="w-full min-w-0 rounded-2xl border border-white/10 bg-grey-1 px-4 py-3 text-sm outline-none placeholder:text-grey-2 focus:border-white/40"
                 />
               </div>
               <div>
@@ -93,7 +93,7 @@ export function Connect() {
                   required
                   autoComplete="email"
                   placeholder="Email"
-                  className="w-full rounded-2xl border border-white/10 bg-grey-1 px-4 py-3 text-sm outline-none placeholder:text-grey-2 focus:border-white/40"
+                  className="w-full min-w-0 rounded-2xl border border-white/10 bg-grey-1 px-4 py-3 text-sm outline-none placeholder:text-grey-2 focus:border-white/40"
                 />
               </div>
             </div>

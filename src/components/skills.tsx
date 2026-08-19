@@ -11,12 +11,12 @@ export function Skills() {
         Skills
       </h2>
 
-      <div className="grid grid-cols-3 gap-3 md:gap-4">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 md:gap-4">
         {skills.map((s) => (
           <button
             key={s.name}
             type="button"
-            className="skill-pill group relative grid h-16 place-items-center rounded-full border border-white/10 bg-grey-1 text-fg transition-[border-color,box-shadow,background-color,color] duration-300"
+            className="skill-pill group relative grid h-16 min-w-0 place-items-center rounded-full border border-white/10 bg-grey-1 px-3 text-fg transition-[border-color,box-shadow,background-color,color] duration-300"
             style={
               {
                 "--skill-bg": s.bg,
@@ -24,7 +24,7 @@ export function Skills() {
               } as React.CSSProperties
             }
           >
-            <span className="skill-label font-display text-sm font-semibold tracking-wide md:text-base">
+            <span className="skill-label truncate px-1 font-display text-xs font-semibold tracking-wide sm:text-sm md:text-base">
               {s.name}
             </span>
             <span className="skill-logo text-white">

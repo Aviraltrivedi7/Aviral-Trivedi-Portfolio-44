@@ -26,7 +26,7 @@ function ProjectCard({ project }: { project: Project }) {
         "--project-accent": project.accent,
         boxShadow: "0 24px 60px -30px rgba(0,0,0,0.8)",
       } as CSSProperties}
-      className="group relative flex h-[88%] w-[82vw] shrink-0 flex-col rounded-2xl border border-white/10 bg-[#121215] text-fg transition-[border-color,box-shadow] duration-500 hover:border-[var(--project-accent)] sm:w-[46vw] md:w-[40vw] lg:w-[30vw] xl:w-[26vw]"
+      className="group relative flex min-h-[24rem] w-full flex-col rounded-2xl border border-white/10 bg-[#121215] text-fg transition-[border-color,box-shadow] duration-500 hover:border-[var(--project-accent)] sm:min-h-[26rem] md:h-[88%] md:w-[40vw] md:shrink-0 lg:w-[30vw] xl:w-[26vw]"
     >
       <div
         aria-hidden
@@ -92,7 +92,10 @@ export function ProjectsGallery() {
     const track = trackRef.current;
     if (!section || !track) return;
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      window.matchMedia("(max-width: 767px)").matches
+    ) {
       return;
     }
 
@@ -135,17 +138,13 @@ export function ProjectsGallery() {
 
       <div
         ref={trackRef}
-        className="flex flex-nowrap items-center gap-6 overflow-hidden will-change-transform pl-[6vw]"
-        style={{ 
-          height: "calc(100vh - 14rem)",
-          minWidth: "max-content"
-        }}
+        className="flex w-full flex-col items-stretch gap-6 px-6 py-8 md:h-[calc(100vh-14rem)] md:min-w-max md:flex-row md:flex-nowrap md:items-center md:overflow-hidden md:will-change-transform md:pl-[6vw] md:px-0 md:py-0"
       >
         {projects.map((p) => (
           <ProjectCard key={p.slug} project={p} />
         ))}
         {/* Large trailing spacer ensures last card fully visible */}
-        <div className="w-[150vw] shrink-0" />
+        <div className="hidden w-[150vw] shrink-0 md:block" />
       </div>
     </section>
   );

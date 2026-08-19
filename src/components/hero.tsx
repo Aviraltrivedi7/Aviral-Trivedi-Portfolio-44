@@ -113,7 +113,7 @@ export function Hero() {
             suppressHydrationWarning
             onMouseMove={handleMove}
             onMouseLeave={handleLeave}
-            className="isolate absolute top-1/2 left-1/2 z-10 mb-20 h-[80vh] w-[min(60vw,360px)] -translate-x-1/2 -translate-y-1/2 cursor-none will-change-transform"
+            className="isolate absolute top-1/2 left-1/2 z-10 mb-20 h-[66vh] w-[min(78vw,360px)] -translate-x-1/2 -translate-y-1/2 cursor-none will-change-transform sm:h-[74vh] sm:w-[min(68vw,360px)] md:h-[80vh] md:w-[min(60vw,360px)] will-change-transform"
           >
             <div
               aria-hidden
@@ -149,13 +149,13 @@ export function Hero() {
               ref={ringRef}
               aria-hidden
               suppressHydrationWarning
-              className="pointer-events-none absolute top-0 left-0 z-30 h-24 w-24 rounded-full border border-cyan-100/70 bg-cyan-100/[0.04] opacity-0 shadow-[0_0_30px_rgba(34,211,238,0.35)] transition-opacity duration-300 will-change-transform"
+              className="pointer-events-none absolute top-0 left-0 z-30 hidden h-24 w-24 rounded-full border border-cyan-100/70 bg-cyan-100/[0.04] opacity-0 shadow-[0_0_30px_rgba(34,211,238,0.35)] transition-opacity duration-300 will-change-transform md:block will-change-transform"
             />
           </div>
         </div>
 
         {/* Role — small, right-aligned with the wordmark (under the "R") */}
-        <span className="mt-4 w-full max-w-[40vw] self-end text-right font-display text-xs tracking-wide text-grey-2 md:text-sm">
+        <span className="mt-4 w-full max-w-[72vw] self-end text-right font-display text-xs tracking-wide text-grey-2 sm:max-w-[52vw] md:max-w-[40vw] md:text-sm">
           {ROLE}
         </span>
       </div>

@@ -70,15 +70,14 @@ export function StripCutter() {
   return (
     <div
       ref={rootRef}
-      className="relative overflow-hidden bg-fg"
-      style={{ height: "105vh" }}
+      className="relative h-[72vh] overflow-hidden bg-fg md:h-[105vh]"
     >
-      <div className="sticky top-0 h-screen overflow-hidden">
+      <div className="sticky top-0 h-[72vh] overflow-hidden md:h-screen">
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
           {/* Strip A */}
           <div
             data-band-a
-            className="absolute h-[16vh] w-[170vw] overflow-hidden bg-bg rotate-[14deg] will-change-transform"
+            className="absolute h-[12vh] w-[240vw] overflow-hidden bg-bg rotate-[14deg] will-change-transform md:h-[16vh] md:w-[170vw]"
           >
             <div
               data-hmarq
@@ -91,7 +90,7 @@ export function StripCutter() {
           {/* Strip B — the reverse diagonal, together forming an X */}
           <div
             data-band-b
-            className="absolute h-[16vh] w-[170vw] overflow-hidden bg-bg -rotate-[14deg] will-change-transform"
+            className="absolute h-[12vh] w-[240vw] overflow-hidden bg-bg -rotate-[14deg] will-change-transform md:h-[16vh] md:w-[170vw]"
           >
             <div
               data-hmarq

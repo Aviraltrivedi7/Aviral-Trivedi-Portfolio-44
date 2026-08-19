@@ -71,8 +71,7 @@ export function WipeTransition({ children }: { children: React.ReactNode }) {
     <div
       id="about"
       ref={rootRef}
-      className="relative"
-      style={{ height: "160vh" }}
+      className="relative h-[120vh] md:h-[160vh]"
     >
       <div ref={frameRef} className="sticky top-0 h-screen overflow-hidden">
         {/* About white content, always fully rendered */}
