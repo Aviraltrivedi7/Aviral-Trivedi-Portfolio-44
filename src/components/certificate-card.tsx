@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 
 type Certificate = {
   title: string;
@@ -9,10 +9,12 @@ type Certificate = {
   tag: string;
   preview: string;
   file: string;
+  accent?: string;
 };
 
 export function CertificateCard({ certificate }: { certificate: Certificate }) {
   const [open, setOpen] = useState(false);
+  const accent = certificate.accent ?? "#67e8f9";
 
   useEffect(() => {
     if (!open) return;
@@ -32,10 +34,21 @@ export function CertificateCard({ certificate }: { certificate: Certificate }) {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="group flex min-h-52 w-full flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-5 text-left backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent/60 hover:bg-white/[0.05] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+        className="group relative flex min-h-52 w-full flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] p-5 text-left backdrop-blur-sm transition-[border-color,background-color,box-shadow,transform] duration-500 hover:-translate-y-1 hover:border-[var(--cert-accent)] hover:bg-white/[0.055] hover:shadow-[0_0_32px_var(--cert-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--cert-accent)]"
+        style={{ "--cert-accent": accent } as CSSProperties}
         aria-label={`Open ${certificate.title} certificate`}
       >
-        <div>
+        <span
+          aria-hidden
+          className="pointer-events-none absolute -right-12 -top-16 h-40 w-40 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-70"
+          style={{ background: accent }}
+        />
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-x-5 top-0 h-px opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          style={{ background: `linear-gradient(90deg, transparent, ${accent}, transparent)` }}
+        />
+        <div className="relative z-10">
           <div className="flex items-start justify-between gap-4 text-xs text-grey-2">
             <span>{certificate.issuer}</span>
             <span className="rounded-md bg-white/5 px-2 py-0.5 text-[10px] text-white/70">
@@ -46,7 +59,7 @@ export function CertificateCard({ certificate }: { certificate: Certificate }) {
             {certificate.title}
           </h4>
         </div>
-        <span className="mt-5 text-xs font-semibold tracking-wider text-accent uppercase transition-transform group-hover:translate-x-1">
+        <span className="relative z-10 mt-5 text-xs font-semibold tracking-wider text-accent uppercase transition-all group-hover:translate-x-1 group-hover:text-[var(--cert-accent)]">
           View certificate ↗
         </span>
       </button>
@@ -61,6 +74,10 @@ export function CertificateCard({ certificate }: { certificate: Certificate }) {
         >
           <div
             className="relative flex max-h-[92vh] w-full max-w-5xl flex-col overflow-hidden rounded-3xl border border-white/15 bg-[#111116] shadow-2xl"
+            style={{
+              "--cert-accent": accent,
+              boxShadow: `0 0 70px -20px ${accent}`,
+            } as CSSProperties}
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-center justify-between gap-4 border-b border-white/10 px-5 py-4">
@@ -71,7 +88,7 @@ export function CertificateCard({ certificate }: { certificate: Certificate }) {
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/15 text-xl text-grey-2 transition-colors hover:border-white/40 hover:text-fg"
+                className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/15 text-xl text-grey-2 transition-all hover:border-[var(--cert-accent)] hover:text-[var(--cert-accent)] hover:shadow-[0_0_20px_var(--cert-accent)]"
                 aria-label="Close certificate preview"
               >
                 ×

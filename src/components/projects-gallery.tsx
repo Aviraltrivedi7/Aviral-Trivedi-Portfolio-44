@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type CSSProperties } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Link from "next/link";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { projects, type Project } from "@/lib/projects";
@@ -19,9 +18,24 @@ function ProjectCard({ project }: { project: Project }) {
       whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative flex h-[88%] w-[82vw] shrink-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#121215] text-fg shadow-[0_24px_60px_-30px_rgba(0,0,0,0.8)] transition-all duration-300 hover:border-white/20 sm:w-[46vw] md:w-[40vw] lg:w-[30vw] xl:w-[26vw]"
+      whileHover={reduce ? undefined : {
+        y: -8,
+        boxShadow: `0 28px 72px -28px ${project.accent}b3, 0 0 34px -12px ${project.accent}66`,
+      }}
+      style={{
+        "--project-accent": project.accent,
+        boxShadow: "0 24px 60px -30px rgba(0,0,0,0.8)",
+      } as CSSProperties}
+      className="group relative flex h-[88%] w-[82vw] shrink-0 flex-col rounded-2xl border border-white/10 bg-[#121215] text-fg transition-[border-color,box-shadow] duration-500 hover:border-[var(--project-accent)] sm:w-[46vw] md:w-[40vw] lg:w-[30vw] xl:w-[26vw]"
     >
-      <Link href={`/projects/${project.slug}`} prefetch={true} className="flex min-h-0 flex-1 flex-col">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -inset-5 z-0 rounded-[2rem] opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-70"
+        style={{
+          background: `radial-gradient(circle at 50% 35%, ${project.accent}66, transparent 68%)`,
+        }}
+      />
+      <a href={`/projects/${project.slug}.html`} className="relative z-10 flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl">
         <div
           className="relative min-h-0 flex-1 overflow-hidden"
           style={{
@@ -53,7 +67,7 @@ function ProjectCard({ project }: { project: Project }) {
 
         <div className="flex shrink-0 items-end justify-between gap-4 p-6 bg-[#121215]">
           <div className="min-w-0">
-            <h3 className="font-display text-xl font-bold tracking-tight md:text-2xl text-white group-hover:text-cyan-400 transition-colors">
+            <h3 className="font-display text-xl font-bold tracking-tight text-white transition-colors group-hover:text-[var(--project-accent)] md:text-2xl">
               {project.title}
             </h3>
             <p className="mt-1.5 line-clamp-2 text-sm text-grey-2">
@@ -64,7 +78,7 @@ function ProjectCard({ project }: { project: Project }) {
             {project.year}
           </span>
         </div>
-      </Link>
+      </a>
     </motion.article>
   );
 }

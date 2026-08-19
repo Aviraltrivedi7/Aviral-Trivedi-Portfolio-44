@@ -27,6 +27,7 @@ const CERTIFICATIONS = [
     tag: "Security",
     preview: "/certificates/iitk-cybersecurity-quiz-2025.png",
     file: "/certificates/iitk-cybersecurity-quiz-2025.png",
+    accent: "#22d3ee",
   },
   {
     title: "Advanced Cybersecurity Awareness Quiz 2025",
@@ -34,6 +35,7 @@ const CERTIFICATIONS = [
     tag: "Security",
     preview: "/certificates/iitk-advanced-cybersecurity-2025.png",
     file: "/certificates/iitk-advanced-cybersecurity-2025.png",
+    accent: "#34d399",
   },
   {
     title: "Oracle Cloud Infrastructure 2025 Certified Generative AI Professional",
@@ -41,6 +43,7 @@ const CERTIFICATIONS = [
     tag: "Cloud & AI",
     preview: "/certificates/oracle-certified-generative-ai-professional.jpg",
     file: "/certificates/oracle-certified-generative-ai-professional.jpg",
+    accent: "#fbbf24",
   },
   {
     title: "Front End Web Development Internship",
@@ -48,6 +51,7 @@ const CERTIFICATIONS = [
     tag: "Development",
     preview: "/certificates/ibm-certificate-2025-preview.png",
     file: "/certificates/ibm-certificate-2025.pdf",
+    accent: "#a78bfa",
   },
   {
     title: "Start Writing Prompts like a Pro",
@@ -55,6 +59,7 @@ const CERTIFICATIONS = [
     tag: "AI & Writing",
     preview: "/certificates/google-coursera-certificate-preview.png",
     file: "/certificates/google-coursera-certificate.pdf",
+    accent: "#f472b6",
   },
   {
     title: "Yuva AI for All",
@@ -62,6 +67,7 @@ const CERTIFICATIONS = [
     tag: "AI Skills",
     preview: "/certificates/yuva-ai-certificate-preview.png",
     file: "/certificates/yuva-ai-certificate.pdf",
+    accent: "#60a5fa",
   },
 ];
 

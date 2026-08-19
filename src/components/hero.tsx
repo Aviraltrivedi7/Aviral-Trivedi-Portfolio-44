@@ -74,7 +74,24 @@ export function Hero() {
       suppressHydrationWarning
       className="relative flex h-dvh flex-col items-center justify-center overflow-hidden bg-bg"
     >
-      <div className="relative flex w-fit flex-col items-center" suppressHydrationWarning>
+      <div aria-hidden className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute -top-[18%] left-1/2 h-[58vh] w-[58vw] -translate-x-1/2 rounded-full bg-cyan-400/[0.08] blur-[120px] motion-safe:animate-[pulse_9s_ease-in-out_infinite]" />
+        <div className="absolute -bottom-[24%] -left-[12%] h-[48vh] w-[48vw] rounded-full bg-indigo-500/[0.07] blur-[130px] motion-safe:animate-[pulse_12s_ease-in-out_infinite]" />
+        <div className="absolute -right-[12%] top-[22%] h-[42vh] w-[42vw] rounded-full bg-fuchsia-500/[0.055] blur-[130px] motion-safe:animate-[pulse_11s_ease-in-out_infinite]" />
+        <div
+          className="absolute inset-0 opacity-[0.16]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px)",
+            backgroundSize: "72px 72px",
+            maskImage: "radial-gradient(ellipse at center, black 0%, transparent 72%)",
+            WebkitMaskImage: "radial-gradient(ellipse at center, black 0%, transparent 72%)",
+          }}
+        />
+        <div className="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-cyan-300/25 to-transparent motion-safe:animate-pulse" />
+      </div>
+
+      <div className="relative z-10 flex w-fit flex-col items-center" suppressHydrationWarning>
         {/* Name — small, left-aligned with the wordmark */}
         <span className="mb-3 w-full self-start font-display text-lg font-semibold tracking-tight text-fg md:text-2xl">
           {NAME}
@@ -96,20 +113,28 @@ export function Hero() {
             suppressHydrationWarning
             onMouseMove={handleMove}
             onMouseLeave={handleLeave}
-            className="absolute top-1/2 left-1/2 z-10 mb-20 h-[80vh] w-[min(60vw,360px)] -translate-x-1/2 -translate-y-1/2 cursor-none will-change-transform"
+            className="isolate absolute top-1/2 left-1/2 z-10 mb-20 h-[80vh] w-[min(60vw,360px)] -translate-x-1/2 -translate-y-1/2 cursor-none will-change-transform"
           >
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-[-10%] z-0 rounded-full border border-cyan-200/15 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.16),transparent_62%)] blur-[1px] motion-safe:animate-[spin_28s_linear_infinite]"
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-[5%] z-0 rounded-full border border-white/[0.08] motion-safe:animate-[pulse_5s_ease-in-out_infinite]"
+            />
             <Image
               src="/images/hero-cutout.png"
               alt="Aviral Trivedi"
               fill
               priority
               sizes="(max-width: 768px) 88vw, 360px"
-              className="object-contain grayscale contrast-[1.05] drop-shadow-[0_24px_36px_rgba(0,0,0,0.45)]"
+              className="relative z-10 object-contain grayscale contrast-[1.05] drop-shadow-[0_28px_42px_rgba(0,0,0,0.58)]"
             />
             <div
               ref={colorLayerRef}
               aria-hidden
-              className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-150"
+              className="pointer-events-none absolute inset-0 z-20 opacity-0 transition-opacity duration-150"
             >
               <Image
                 src="/images/hero-cutout.png"
@@ -124,7 +149,7 @@ export function Hero() {
               ref={ringRef}
               aria-hidden
               suppressHydrationWarning
-              className="pointer-events-none absolute top-0 left-0 h-24 w-24 rounded-full border border-white/40 opacity-0 shadow-[0_0_30px_rgba(255,255,255,0.15)] transition-opacity duration-300 will-change-transform"
+              className="pointer-events-none absolute top-0 left-0 z-30 h-24 w-24 rounded-full border border-cyan-100/70 bg-cyan-100/[0.04] opacity-0 shadow-[0_0_30px_rgba(34,211,238,0.35)] transition-opacity duration-300 will-change-transform"
             />
           </div>
         </div>
