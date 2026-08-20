@@ -7,7 +7,7 @@ const EDUCATION = [
   {
     institution: "Indian Institute of Technology (IIT), Madras",
     degree: "Software Engineering & Web Applications",
-    period: "2025 – 2029",
+    period: "2024 – 2028",
     highlight: "Comprehensive program focusing on software architecture, full-stack web development, and algorithms.",
     badge: "Undergraduate",
   },
