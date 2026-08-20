@@ -12,7 +12,7 @@ const EDUCATION = [
     badge: "Undergraduate",
   },
   {
-    institution: "Kendriya Vidyalaya Mati Akbarpur, Kanpur Dehat",
+    institution: "Kendriya Vidyalaya",
     degree: "Senior Secondary School (Class XII)",
     period: "Completed",
     highlight: "Graduated with an outstanding 87.2% aggregate score in the Science stream.",
